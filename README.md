@@ -1,4 +1,4 @@
-# WAY-EEG-GAL Utilities --- Brainhack Rome 2025
+# WAY-EEG-GAL Utilities — Brainhack Rome 2025
 
 This repository contains tools and scripts to convert EEG recordings from the WAY-EEG-GAL dataset ([Luciw et al., 2014](https://www.nature.com/articles/sdata201447)) into machine learning-ready tensors that contain event-aligned EEG sequences. The resulting dataset was used to forecast motor behaviour at [Brainhack Rome 2025](https://brainhackrome.github.io/) (project repository [here](https://github.com/matteo-d-m/brainhack-rome-forecasting)) and in related follow-ups. 
 
@@ -19,7 +19,7 @@ This keeps the original sampling rates and provides a consistent, machine learni
 ## Data Preprocessing
 ### 1. Band-pass filtering and channel selection
 
-The first preprocessing step is handled by `bandpass_filter.py`. Starting from the original per-series JSON files ({HS_P*_S*.json}) that contain the EEG recordings, the code retains 14 fronto-central EEG channels of interest and filters the corresponding signals with a zero-phase Butterworth band-pass filter (0.5–40 Hz) to remove slow drifts and high-frequency noise. The output of this stage is a processed JSON file (`HS_P*_S*_processed.json`) that contains the cleaned EEG data, stored in the `EEG.filtered_data` field.
+The first preprocessing step is handled by `bandpass_filter.py`. Starting from the original per-series JSON files (`{HS_P*_S*.json}`) that contain the EEG recordings, the code retains 14 fronto-central EEG channels of interest and filters the corresponding signals with a zero-phase Butterworth band-pass filter (0.5–40 Hz) to remove slow drifts and high-frequency noise. The output of this stage is a processed JSON file (`HS_P*_S*_processed.json`) that contains the cleaned EEG data, stored in the `EEG.filtered_data` field.
 
 ### 2. ICA and ICLabel for neural components
 
