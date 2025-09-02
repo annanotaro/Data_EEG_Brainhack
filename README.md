@@ -9,12 +9,12 @@ The original dataset is MATLAB-centric and multi-modal, including both EEG and n
 
 ### Conversion from MATLAB to JSON
 
-The original WAY-EEG-GAL dataset consists of MATLAB `.mat` files. To make them easier to handle in Python, we converted those files into two classes of JSON files
+The original WAY-EEG-GAL dataset consists of MATLAB `.mat` files. To make them easier to handle in Python, we converted those files into two classes of JSON files:
 
-1. **Session files:** JSON files with EEG, EMG, KIN, ENV, and MISC sections --- each one containing signals, channel names, and sampling rates. These files correspond to `{HS_P*_S*, WS_P*_S*}.`mat files in the original dataset
+1. **Session files:** JSON files with EEG, EMG, KIN, ENV, and MISC sections — each one containing signals, channel names, and sampling rates. These files correspond to `{HS_P*_S*, WS_P*_S*}.mat` files in the original dataset
 2. **Marker files:** JSON files with columns and data tables storing event information. These files correspond to `P*_AllLifts.mat` in the original dataset 
 
-This keeps the original sampling rates and provides a consistent, machine learning-friendly format for downstream preprocessing.
+This keeps the original sampling rates and provides a consistent, machine learning-friendly format for downstream processing.
 
 ## Data Preprocessing
 ### 1. Band-pass filtering and channel selection
@@ -23,7 +23,7 @@ The first preprocessing step is handled by `bandpass_filter.py`. Starting from t
 
 ### 2. ICA and ICLabel for neural components
 
-The second preprocessing step is performed by `ica.py`. Starting from the JSON file produced by `bandpass_filter.py`, the code in `ica.py` constructs an MNE Raw object, assigns the standard 10–20 montage, and applies an average reference. Subsequently, it fits an Independent Component Analysis (ICA) model to decompose the EEG into statistically independent components. The resulting components are automatically classified using the ICLabel classifier ([Pion-Tonachini et al., 2019](https://www.sciencedirect.com/science/article/pii/S1053811919304185)), which labels as either brain, ocular, muscular, or other. Only the components labelled as `brain` are kept, and the resulting neural components matrix is saved as a NumPy array ({data/HS_P1_S{run}_eeg.npy}) of dimension `(components × time)`. 
+The second preprocessing step is performed by `ica.py`. Starting from the JSON file produced by `bandpass_filter.py`, the code in `ica.py` constructs an MNE Raw object, assigns the standard 10–20 montage, and applies an average reference. Subsequently, it fits an Independent Component Analysis (ICA) model to decompose the EEG into statistically independent components. The resulting components are automatically classified as either brain, ocular, muscular, or other using the ICLabel classifier ([Pion-Tonachini et al., 2019](https://www.sciencedirect.com/science/article/pii/S1053811919304185)). Subsequently, non-brain components are discarded and brain components are saved as NumPy arrays ({data/HS_P1_S{run}_eeg.npy}) of dimension `(components × time)`. 
 
 ### 3.  Event-aligned sequence extraction
 
