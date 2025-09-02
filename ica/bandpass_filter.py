@@ -70,4 +70,4 @@ if __name__ == '__main__':
     input_json = 'ica code\HS_P1_S1.json'     
     output_json = f'HS_P1_S1_processed.json'
     processed_data = preprocess_eeg(input_json, output_json)
-    print("Processed EEG data with bandpass filtering and ICA saved to:", output_json)
+    print("Processed EEG data with bandpass filtering saved to:", output_json)

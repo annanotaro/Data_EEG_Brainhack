@@ -1,9 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import welch
+from pathlib import Path
 
-# Load the neural components array from the .npy file
-file_path = 'ica code\HS_P1_S1_eeg.npy'
+file_path = Path("data") / "HS_P1_S1_eeg.npy"
+eeg = np.load(file_path)
+n_channels, n_times = eeg.shape
 neural_components = np.load(file_path)
 
 # Print the shape and some summary statistics
