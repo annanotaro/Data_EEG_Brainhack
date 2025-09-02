@@ -39,7 +39,8 @@ The third (and last) preprocessing step is implemented in `sequences.py`. This s
 ## Citing WAY-EEG-GAL
 
 If you use WAY-EEG-GAL data, please cite the data descriptor:
-Luciw, Jarocka & Edin (2014). Multi-channel EEG recordings during 3,936 grasp and lift trials with varying weight and friction. Scientific Data 1:140047.
+
+```Luciw, Jarocka & Edin (2014). Multi-channel EEG recordings during 3,936 grasp and lift trials with varying weight and friction. Scientific Data 1:140047.```
 
 The WAY-EEG-GAL dataset is released under a Creative Commons Attribution 4.0 license ([CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/deed.en)).
 
