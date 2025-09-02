@@ -30,7 +30,7 @@ def windows(folder, filename):
 
     # Iterate EEG files (only neural component matrices)
     for eeg_filename in sorted(os.listdir(eeg_dir)):
-        if not eeg_filename.endswith('_neural_components.npy'):
+        if not eeg_filename.endswith('_eeg.npy'):
             continue
         eeg_path = os.path.join(eeg_dir, eeg_filename)
 
