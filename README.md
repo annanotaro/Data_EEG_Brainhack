@@ -11,6 +11,15 @@ Why make it ML-friendly: the release is MATLAB-centric and multi-modal. We stand
 
 Download links are listed in the WAY-EEG-GAL data descriptor (figshare archive, CC BY 4.0).
 
+## Conversion from MATLAB to JSON
+
+The original WAY-EEG-GAL data are provided as MATLAB .mat files. To make them easier to handle in Python, we converted them into structured JSON:
+
+1. **Session files** (HS_P*_S*.mat, WS_P*_S*.mat) → JSON with EEG, EMG, KIN, ENV, MISC sections, each containing signals, channel names, and sampling rates.
+2. **Marker files** (P*_AllLifts.mat) → JSON with columns and data tables storing event information.
+
+This keeps the original sampling rates and provides a consistent, ML-friendly format for downstream preprocessing.
+
 ## Preprocessing
 1. ### Band-pass filtering and channel selection
 
